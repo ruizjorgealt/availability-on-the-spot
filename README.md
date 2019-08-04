@@ -36,7 +36,7 @@ We need details such as:
 + Instance type
 + Security groups
 + Amazon Machine Image (AMI)
-+ Keypais
++ Keypairs
 + Spot price
 
 #### Tag Spot Instances
