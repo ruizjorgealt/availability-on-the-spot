@@ -30,9 +30,38 @@ This step will list resources in our subnets within our virtual private cloud (v
 This step is very simple, we simply make a request to get the latest spot price for the zone that have chosen to use for our spot ec2 instance deployment. We will use this price for our bidding.
 
 #### Request Spot Price
-During this step we will be making the actual spot ec2 request 
+During this step we will be making the actual spot ec2 request. For this step to be successful, we have to ensure that we provide the appropriate details to ensure we get the instance we wish to deploy. 
+
+We need details such as:
++ Instance type
++ Security groups
++ Amazon Machine Image (AMI)
++ Keypais
++ Spot price
+
+#### Tag Spot Instances
+Once our request has been fulfilled successfully, we need to ensure that we provide the appropriate tags to our spot ec2 instance. Tagging our instance will allow us to identify the spot ec2 instance from other instances when executing the lambda function, it will serve as an identifier.
+
+#### Registering Spot Instance to Target Group
+Once we have successfully deployed our instance, it is important that we register it to our target group. This will ensure that we distribute any incoming HTTPS/HTTPS requests through an elastic load balancer.
 
 ### Variables
+
+| Variable | |
+|:---------|-|
+|REGION|The region in which you wish to deploy and access AWS resources|
+|instance_name|Base name of your instance|
+|key_pairs|Keypairs to assign to instance|
+|instance_prefix|Name prefix, allows you to identify in which zone instance has been deployed.|
+|instance_type|Instance type|
+|instance_description| Instance description, required to specify operating system.|
+|ami_id|AMI id|
+|number_of_subnets|Number of subnets in your VPC in which you wish to deploy new instance.|
+|subnets_id_list|List of subnet ids. Must correlate with number_of_subnets.|
+|zones| List of zones within your region, for example, us-east-2a us-east-2b us-east-2c if you want to deploy in us-east-2. Must correlate with number_of_subnets.|
+|security_group|Security group id|
+|target_group_arn|Amazon Resource Name of your target group. Required to register new instance.|
+|name_tag_index|EC2 tag index array containing the name of the instance, which will serve as the identifier.|
 
 
 Instance Running State Codes Table
