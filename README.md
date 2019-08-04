@@ -79,7 +79,7 @@ Instance Running State Codes Table
 |80    |stopped      |
 
 ## Backlog
-- [ ] Multiple deployments per zone
-- [ ] Ability to automate the amount of ec2 instances we wish to maintain
+- [ ] Balance deployments per zone
+- [ ] Ability to automate deployment of instances until count is met
 - [ ] Terraform configuration files for automating infrastructure provisioning
 - [ ] Ansible playbook for automating configuration management
