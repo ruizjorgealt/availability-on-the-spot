@@ -4,7 +4,7 @@ An EC2 Spot instance is spare compute capacity available from AWS with up to a 9
 ## How It Works
 Using a combination of AWS service we are able to achieve highly available and cost effective infrastructure.
 
-Everytime a user makes a request to our web appiclation, the request is then resolved by aws's DNS service (route 53). The request is resolved an application load balancer which then redirects the request among a set of spot ec2 instances. Once an 2 minute spot termination warning is issued, CloudWatch Events will then trigger a Lambda function which will execute the code that will deploy an additional spot instance in order to ensure we
+Everytime a user makes a request to our web appiclation, the request is then resolved by aws's DNS service (route 53). The request is resolved an application load balancer which then redirects the request among a set of spot ec2 instances. Once an 2 minute spot termination warning is issued, CloudWatch Events will then trigger a Lambda function which will execute the code that will deploy an additional spot instance. This ensure that we maintain a highly available and fault tolerant environment at an affordable price.
 
 ![High Available Infrastructure](https://jorgearuiz.net/wp-content/uploads/2019/08/spot2.png)
 
