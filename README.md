@@ -25,3 +25,7 @@ Instance Running State Codes Table
 |48    |terminated   |
 |64    |stopping     |
 |80    |stopped      |
+
+## Backlog
+- [ ] Terraform configuration files for automating infrastructure provisioning
+- [ ] Ansible playbook for automating configuration provisioning
