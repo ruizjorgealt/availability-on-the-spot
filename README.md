@@ -1,0 +1,1 @@
+# availability-on-the-spot
