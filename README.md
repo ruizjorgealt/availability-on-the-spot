@@ -6,7 +6,7 @@ Using a combination of AWS service we are able to achieve highly available and c
 ![High Available Infrastructure](https://jorgearuiz.net/wp-content/uploads/2019/08/spot2.png)
 
 ![elastic load balancer](https://jorgearuiz.net/wp-content/uploads/2019/08/ELB.jpeg)
-One of the main components in this implementation is the **elastic load balancer**. This service will allow us to distribute incoming requests among a set of registered spot ec2 instances. These ec2 instances are part of a target group. Any incoming request will be sent to instances of this group. This alleviates CPU and memory usage by distrubiting incoming requests.
+One of the main components in this implementation is the **elastic load balancer**. This service will allow us to distribute incoming requests among a set of registered spot ec2 instances. These ec2 instances are part of a target group. Any incoming request will be sent to instances of this group. This alleviates CPU and memory usage by distrubiting incoming requests, ensuring that users experience a service that is fast and reliable.
 
 ![ELB](https://jorgearuiz.net/wp-content/uploads/2019/08/elb-1.jpg)
 
