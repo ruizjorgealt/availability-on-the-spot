@@ -9,7 +9,9 @@ An EC2 Spot instance is spare compute capacity available from AWS with up to a 9
 
 ![python + boto 3](https://jorgearuiz.net/wp-content/uploads/2019/08/python_boto.jpeg)
 
-![python + boto 3](https://jorgearuiz.net/wp-content/uploads/2019/08/spot_ec2.jpeg)
+![spot ec2](https://jorgearuiz.net/wp-content/uploads/2019/08/spot_ec2.jpeg)
+
+![serverless lambda](https://jorgearuiz.net/wp-content/uploads/2019/08/lambda.jpeg)
 
 ### Variables
 
