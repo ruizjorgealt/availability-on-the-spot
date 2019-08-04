@@ -49,11 +49,11 @@ Once we have successfully deployed our instance, it is important that we registe
 
 | Variable | |
 |:---------|-|
-|REGION|The region in which you wish to deploy and access AWS resources|
-|instance_name|Base name of your instance|
-|key_pairs|Keypairs to assign to instance|
-|instance_prefix|Name prefix, allows you to identify in which zone instance has been deployed.|
-|instance_type|Instance type|
+|REGION|The region in which you wish to deploy and access AWS resources.|
+|instance_name|Base name of your instance. For example: MyWebsite|
+|key_pairs|Keypairs to assign to instance.|
+|instance_prefix|Name prefix, allows you to identify in which zone instance has been deployed. For example: MyWebsite-A, this allows you to quickly identify that your instance is in zone A.|
+|instance_type|Instance type. For example: t2.micro|
 |instance_description| Instance description, required to specify operating system.|
 |ami_id|AMI id|
 |number_of_subnets|Number of subnets in your VPC in which you wish to deploy new instance.|
