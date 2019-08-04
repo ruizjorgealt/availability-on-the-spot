@@ -3,6 +3,9 @@ An EC2 Spot instance is spare compute capacity available from AWS with up to a 9
 
 ## How It Works
 Using a combination of AWS service we are able to achieve highly available and cost effective infrastructure.
+
+Everytime a user makes a request to our web appiclation, the request is then resolved by aws's DNS service (route 53). The request is resolved an application load balancer which then redirects the request among a set of spot ec2 instances. Once an 2 minute spot termination warning is issued, CloudWatch Events will then trigger a Lambda function which will execute the code that will deploy an additional spot instance in order to ensure we
+
 ![High Available Infrastructure](https://jorgearuiz.net/wp-content/uploads/2019/08/spot2.png)
 
 ![spot ec2](https://jorgearuiz.net/wp-content/uploads/2019/08/spot_ec2.jpeg)
@@ -76,5 +79,6 @@ Instance Running State Codes Table
 |80    |stopped      |
 
 ## Backlog
+- [ ] Ability to set amount of ec2 instances we wish to maintain
 - [ ] Terraform configuration files for automating infrastructure provisioning
 - [ ] Ansible playbook for automating configuration management
