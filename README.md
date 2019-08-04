@@ -3,9 +3,7 @@ An EC2 Spot instance is spare compute capacity available from AWS with up to a 9
 
 ## How It Works
 
-## How To Setup
-
-![elastic load balancer](https://jorgearuiz.net/wp-content/uploads/2019/08/ELB.jpeg)
+![elastic load balancer](https://jorgearuiz.net/wp-content/uploads/2019/08/spot2.png)
 
 ![python + boto 3](https://jorgearuiz.net/wp-content/uploads/2019/08/python_boto.jpeg)
 
