@@ -28,4 +28,4 @@ Instance Running State Codes Table
 
 ## Backlog
 - [ ] Terraform configuration files for automating infrastructure provisioning
-- [ ] Ansible playbook for automating configuration provisioning
+- [ ] Ansible playbook for automating configuration management
