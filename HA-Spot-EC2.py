@@ -7,26 +7,28 @@ import datetime
 # SPOT REQUEST SPECIFICATIONS #
 #-----------------------------#
 
-REGION = 'us-west-2'
+REGION = ''
 client = boto3.client('ec2', region_name=REGION)
 
 # -- Instance Description -- #
-key_name = instance_name = "name"
+instance_name = ""
+key_pairs = ""
 instance_prefix = ['-A', '-B', '-C']
 instance_type = ''
 instance_description = 'Linux/UNIX'
 ami_id = ''
 
 # -- VPC Description -- #
-subnets_list = ["subnet-a", "subnet-b", "subnet-c"]
-zones = ["us-east-2a", "us-east-2b", "us-east-2c"]
-security_group = 'sg-id'
+number_of_subnets = 3
+subnets_id_list = ["subnet-id", "subnet-id", "subnet-id"]
+zones = ["zone-a", "zone-b", "zone-c"]
+security_group = ''
 
 # -- ELB Description -- #
-target_group_arn = 'elb-arn'
+target_group_arn = 'ARN'
 
 # -- Flags -- #
-bool_values = [0,0,0]
+bool_values = ['0'] * number_of_subnets
 name_tag_index = 0
 
 # -- Current Spot Price Values -- #
@@ -39,7 +41,7 @@ day = datetime.date.today().day
 #-----------------------------------#
 
 ec2 = boto3.resource('ec2', region_name=REGION)
-for x in range(0,3):
+for x in range(0,number_of_subnets):
     for i in ec2.instances.filter(
         Filters=[
             {
@@ -50,37 +52,24 @@ for x in range(0,3):
             },
         ],
     ):
-        if i.tags[name_tag_index]['Value'] == instance_name+instance_prefix[0]:
-            print(instance_name+instance_prefix[0])
-            bool_values[0] = 1
-        elif i.tags[name_tag_index]['Value'] == instance_name+instance_prefix[1]:
-            print(instance_name+instance_prefix[1])
-            bool_values[1] = 1
-        elif i.tags[name_tag_index]['Value'] == instance_name+instance_prefix[2]:
-            print(instance_name+instance_prefix[2])
-            bool_values[2] = 1
+        if i.tags[name_tag_index]['Value'] == instance_name+instance_prefix[x] and i.state['Code'] == 16: 
+            print(instance_name+instance_prefix[x] + " already exists!")
+            bool_values[x] = 1
 
-if bool_values[0] == 0:
-    print("Launch in zone A")
-    spot_subnet = subnets_list[0]
-    instance_name = instance_name+instance_prefix[0]
-    availability_zone = zones[0]
-elif bool_values[1] == 0:
-    print("Launch in zone B")
-    spot_subnet = subnets_list[1]
-    instance_name = instance_name+instance_prefix[1]
-    availability_zone = zones[1]
-elif bool_values[2] == 0:
-    print("Launch in zone C")
-    spot_subnet = subnets_list[2]
-    instance_name = instance_name+instance_prefix[2]
-    availability_zone = zones[2]
-else:
-    print("Launch in random zone")
-    randZone = random.randint(0,2)
-    spot_subnet = subnets_list[randZone]
-    instance_name = instance_name+instance_prefix[randZone]
-    availability_zone = zones[randZone]        
+for j in range(0,number_of_subnets):
+    if bool_values[j] == 0:
+        print("Launching instance in zone" + instance_prefix[j])
+        spot_subnet = subnets_id_list[j]
+        instance_name = instance_name+instance_prefix[j]
+        availability_zone = zones[j]
+        break
+    elif j == (number_of_subnets-1):
+        random_zone = random.randint(0,number_of_subnets)
+        print("Launching in random zone")
+        print("Launching instance in zone" + instance_prefix[random_zone])
+        spot_subnet = subnets_id_list[random_zone]
+        instance_name = instance_name+instance_prefix[random_zone]
+        availability_zone = zones[random_zone]
 
 #---------------------------------#
 # GET SPOT PRICE FOR SPOT REQUEST #
@@ -98,20 +87,19 @@ response = client.describe_spot_price_history(
     StartTime=datetime.datetime(year, month, day),
 )
 
-
 # -- Grab current spot price -- #
 instance_spot_price = response['SpotPriceHistory'][0]['SpotPrice']
 
-#------------------------#
-# REQUEST SPOT INSTANCES #
-#------------------------#
+#-----------------------#
+# REQUEST SPOT INSTANCE #
+#-----------------------#
 
 instance = client.request_spot_instances(
     InstanceCount=1,
     LaunchSpecification={
         'ImageId': ami_id,
         'InstanceType': instance_type,
-        'KeyName': key_name,
+        'KeyName': key_pairs,
         'Monitoring': {
             'Enabled': False
         },

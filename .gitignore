@@ -11,3 +11,4 @@
 *.DS_Store
 *htdocs/
 .env
+test.py
