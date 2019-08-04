@@ -21,9 +21,16 @@ One of the main components in this implementation is the **elastic load balancer
 Serveless lambda plays a important role using in implementing a highly available and fault tolerant infrastructure using spot instances. As previously mentioned, whenever aws is about to take away your spot ec2 instances, you are provided with a 2 minute windows in which you have to take action. Using lambda, we can receive retrieve this warning using CloudWatch Events. This warning then trigger a lambda function that will allow us to be proactive and take action. This ensures that users to do experience downtimes or unreliable web services due to a unhealthy instance.
 
 ![python + boto 3](https://jorgearuiz.net/wp-content/uploads/2019/08/python_boto.jpeg)
-Once a lambda function starts, it will execute our python code. Using boto 3, we can access our aws environment and manage our resources. Our python code will perform a series of steps that will ensure that a new spot instance is deployed.
+Once our lambda function starts through our CloudWatch Event trigger, it will execute our python code. Using boto 3, we can access our aws environment and manage our resources. Our python code will perform a series of steps that will ensure that a new spot instance is deployed.
 
 #### Determining Zone To Deploy Instance
+This step will list resources in our subnets within our virtual private cloud (vpc). Our main goal is to ensure that we deploy our new instance in a subnet that currently does not contain another spot ec2 instance. This is to ensure that we distribute our spot ec2 instances across our availability zones to ensure high availability. We want to avoid the problem of having multiple spot ec2 instance being removed at once due to a spot price change.
+
+#### Getting Spot Price
+This step is very simple, we simply make a request to get the latest spot price for the zone that have chosen to use for our spot ec2 instance deployment. We will use this price for our bidding.
+
+#### Request Spot Price
+During this step we will be making the actual spot ec2 request 
 
 ### Variables
 
