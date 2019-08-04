@@ -17,11 +17,11 @@ An EC2 Spot instance is spare compute capacity available from AWS with up to a 9
 
 
 Instance Running State Codes Table
-| Code | State|
-|------|------|
-|0|pending|
-|16|running|
-|32|shutting-down|
-|48|terminated|
-|64|stopping|
-|80|stopped|
+| Code | State       |
+|------|-------------|
+|0     |pending      |
+|16    |running      |
+|32    |shutting-down|
+|48    |terminated   |
+|64    |stopping     |
+|80    |stopped      |
