@@ -21,14 +21,14 @@ ami_id = ''
 # -- VPC Description -- #
 number_of_subnets = 3
 subnets_id_list = ["subnet-id", "subnet-id", "subnet-id"]
-zones = ["zone-a", "zone-b", "zone-c"]
-security_group = ''
+zones = ["zone-1a", "zone-1b", "zone-1c"]
+security_group = 'sg-id'
 
 # -- ELB Description -- #
-target_group_arn = 'ARN'
+target_group_arn = 'arn'
 
 # -- Flags -- #
-bool_values = ['0'] * number_of_subnets
+bool_values = [0] * number_of_subnets
 name_tag_index = 0
 
 # -- Current Spot Price Values -- #
@@ -64,7 +64,7 @@ for j in range(0,number_of_subnets):
         availability_zone = zones[j]
         break
     elif j == (number_of_subnets-1):
-        random_zone = random.randint(0,number_of_subnets)
+        random_zone = random.randint(0,number_of_subnets-1)
         print("Launching in random zone")
         print("Launching instance in zone" + instance_prefix[random_zone])
         spot_subnet = subnets_id_list[random_zone]
