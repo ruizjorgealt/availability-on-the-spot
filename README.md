@@ -4,9 +4,9 @@ An EC2 Spot instance is spare compute capacity available from AWS with up to a 9
 ## How It Works
 Using a combination of AWS services we are able to achieve highly available and cost effective infrastructure.
 
+![High Available Infrastructure](https://jorgearuiz.net/wp-content/uploads/2019/08/spot2.png)
 Every time the user makes a request to our web appiclation, the request is then resolved by aws' DNS service (Route 53). The request is resolved to an application load balancer which then redirects the request among a set of spot ec2 instances. Once an 2 minute spot termination warning is issued, CloudWatch Events will then trigger a Lambda function which will execute the code that will deploy an additional spot instance. This ensure that we maintain a highly available and fault tolerant environment at an affordable price.
 
-![High Available Infrastructure](https://jorgearuiz.net/wp-content/uploads/2019/08/spot2.png)
 
 ![spot ec2](https://jorgearuiz.net/wp-content/uploads/2019/08/spot_ec2.jpeg)
 **Spot Elastic Compute Cloud (EC2)** instances provide us with compute resources that are affordable. Using spot instances can provide us with discounts of up to 80-90%. Spot prices flunctuate separately in every zone, meaning that spot prices from us-east-2a will likely differ from those in us-east-2b. Spot resources are based on a bidding system, which means that at any point, AWS can take away your spot resources if another AWS customer is willing to pay more. If this occurs, AWS will provide you with a 2 minute **Spot Termination warning** and will then take away your resources once that 2 minute window ends. 
