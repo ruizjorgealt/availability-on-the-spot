@@ -91,4 +91,5 @@ Instance Running State Codes Table
 - [ ] Balance deployments per zone
 - [ ] Ability to automate deployment of instances until count is met
 - [ ] Terraform configuration files for automating infrastructure provisioning
+- [ ] Terraform destroy capabilities for instances
 - [ ] Ansible playbook for automating configuration management
