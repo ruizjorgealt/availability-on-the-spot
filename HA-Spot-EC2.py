@@ -1,4 +1,4 @@
-#Python v3.6
+# Python v3.6
 import boto3
 import time
 import random
