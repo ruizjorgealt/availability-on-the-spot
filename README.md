@@ -89,6 +89,7 @@ Instance Running State Codes Table
 
 ## Compatibility
 Python v3.6
+Boto v3
 
 ## Backlog
 - [ ] Balance deployments per zone
