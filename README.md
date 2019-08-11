@@ -1,3 +1,12 @@
+```
+  _                    _         _                 ____        _   _                 
+ | |    __ _ _ __ ___ | |__   __| | __ _     _    |  _ \ _   _| |_| |__   ___  _ __  
+ | |   / _` | '_ ` _ \| '_ \ / _` |/ _` |  _| |_  | |_) | | | | __| '_ \ / _ \| '_ \ 
+ | |__| (_| | | | | | | |_) | (_| | (_| | |_   _| |  __/| |_| | |_| | | | (_) | | | |
+ |_____\__,_|_| |_| |_|_.__/ \__,_|\__,_|   |_|   |_|    \__, |\__|_| |_|\___/|_| |_|
+                                                         |___/                       
+```
+
 # Availability on the Spot
 An EC2 Spot instance is spare compute capacity available from AWS with up to a 90% discount. By using spot instances we are able to substantially reduce costs and scale-up our application with ease. There are, however, other implementation challenges in using spot instances. Since spot instances are spare compute power, AWS may remove these resources from the available pool at anytime, with only a two minute warning. This solution allows us to overcome these challenges to provide greater availability on spot instances, with decreased costs.
 
