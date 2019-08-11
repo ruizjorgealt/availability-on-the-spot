@@ -87,6 +87,9 @@ Instance Running State Codes Table
 |64    |stopping     |
 |80    |stopped      |
 
+## Compatibility
+Python v3.6
+
 ## Backlog
 - [ ] Balance deployments per zone
 - [ ] Ability to automate deployment of instances until count is met
